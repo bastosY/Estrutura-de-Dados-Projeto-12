@@ -25,44 +25,6 @@ node* initNode(uint32_t x, uint32_t y){
 
 }
 
-uint32_t searchNumb(node* main, uint32_t x, uint32_t y){
-
-    if(main->x == x && main->y == y){
-        return 0;
-    }
-    else{
-        searchNumb(main->father,  x,  y);
-    }
-    return 1;
-
-}
-
-node* search(node* main){
-    if(main != main->father){
-
-        main->father = search(main->father);
-    }
-    return main->father;
-}
-
-void unity(node* main, node* second){
-
-    node* rx = search(main);
-    node* ry = search(second);
-
-    if(rx->height > ry->height){
-        ry->father = rx;
-
-    }
-    else{
-
-        rx->father = ry;
-        if(rx->height == ry->height){
-            ry->height++;
-        }
-    }
-}
-
 uint32_t myrand(){
 
     static uint32_t next = 1;
